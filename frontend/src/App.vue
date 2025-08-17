@@ -1,9 +1,21 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { ref, onMounted } from "vue";
+
+const message = ref("");   // create a reactive variable
+
+onMounted(() => {
+  fetch("https://roylkrishna.pythonanywhere.com/")   // Flask backend URL
+    .then(res => res.text())   // use res.json() if Flask returns JSON
+    .then(data => {
+      message.value = data;    // update reactive variable
+    })
+    .catch(err => console.error("Error:", err));
+});
 </script>
 
 <template>
   <h1>Welcome Roylkrishna</h1>
+  <p>Backend says: {{ message }}</p>
 </template>
 
 <style scoped>
