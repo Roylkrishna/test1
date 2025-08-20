@@ -4,7 +4,7 @@ import { ref, onMounted } from "vue";
 const message = ref("");   // create a reactive variable
 
 onMounted(() => {
-  fetch("https://roylkrishna.pythonanywhere.com/")   // Flask backend URL
+  fetch("https://render-backend-test-afu8.onrender.com/")   // Flask backend URL
     .then(res => res.text())   // use res.json() if Flask returns JSON
     .then(data => {
       message.value = data;    // update reactive variable
